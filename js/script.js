@@ -165,6 +165,8 @@
 //         ],
 //     }
 
+
+
 const { createApp } = Vue;
 
 createApp({
@@ -173,7 +175,7 @@ createApp({
             contacts: [
                 {
                     name: 'Michele',
-                    avatar: './img/avatar_1.jpg',
+                    avatar: 'img\avatar_1.jpg',
                     visible: true,
                     messages: [
                         {
@@ -256,7 +258,7 @@ createApp({
                 },
                 {
                     name: 'Alessandro L.',
-                    avatar: './img/avatar_5.jpg',
+                    avatar: 'img/avatar_5.jpg',
                     visible: true,
                     messages: [
                         {
@@ -333,16 +335,17 @@ createApp({
                     ],
                 }
             ],
-            activeContact: {
-                name: 'Michele',
-                avatar: './img/avatar_1.jpg',
-                visible: true,
-                messages: [
-                    { date: '10/01/2020 15:30:55', message: 'Hai portato a spasso il cane?', status: 'sent' },
-                    { date: '10/01/2020 15:50:00', message: 'Ricordati di stendere i panni', status: 'sent' },
-                    { date: '10/01/2020 16:15:22', message: 'Tutto fatto!', status: 'received' }
-                ],
-            }
+            activeContactIndex: 0, // Indice del contatto attivo iniziale
         };
+    },
+    computed: {
+        activeContact() {
+            return this.contacts[this.activeContactIndex];
+        }
+    },
+    methods: {
+        selectContact(index) {
+            this.activeContactIndex = index;
+        }
     }
 }).mount('#app');
