@@ -19,27 +19,77 @@ body {
     background-color: #f7f7f7;
 }
 
-.app {
+body {
+    font-family: Arial, sans-serif;
+}
+
+#app {
     display: flex;
     height: 100vh;
 }
 
 .sidebar {
     width: 30%;
-    background-color: #f7f7f7;
-    border-right: 1px solid #ddd;
+    background-color: #f2f2f2;
     padding: 20px;
-    box-sizing: border-box;
+    border-right: 1px solid #ccc;
 }
 
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
 
+.contact-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
 
-.chat {
-    width: 70%;
+.contact-info {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    background-color: #ece5dd;
+}
+
+.contact-name {
+    font-weight: bold;
+}
+
+.chat-window {
+    width: 70%;
     padding: 20px;
-    box-sizing: border-box;
+    background-color: #e5ddd5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.message {
+    max-width: 60%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.message.sent {
+    background-color: #dcf8c6;
+    align-self: flex-end;
+}
+
+.message.received {
+    background-color: #fff;
+    align-self: flex-start;
+}
+
+.message-date {
+    font-size: 0.7em;
+    color: #999;
+    position: absolute;
+    bottom: -15px;
+    right: 10px;
 }

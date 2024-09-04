@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template-HTML-CSS-JS</title>
+    <title>Boolzap</title>
     <!-- link CSS -->
     <link rel="stylesheet" href="css/style.css">
     <!-- link Bootstrap -->
@@ -16,16 +16,25 @@
 <body>
 
     <div id="app">
-        <div class="app">
-            <div class="sidebar">
-
+        <!-- Sidebar con la lista contatti -->
+        <div class="sidebar">
+            <div v-for="contact in contacts" :key="contact.name" class="contact-item">
+                <img :src="contact.avatar" alt="contact image" class="contact-avatar" />
+                <div class="contact-info">
+                    <p class="contact-name">{{ contact.name }}</p>
+                </div>
             </div>
+        </div>
 
-            <div class="chat">
-
+        <!-- Finestra della chat -->
+        <div class="chat-window">
+            <div v-for="message in activeContact.messages" :key="message.date" :class="['message', message.status]">
+                <p class="message-text">{{ message.message }}</p>
+                <span class="message-date">{{ message.date }}</span>
             </div>
         </div>
     </div>
+
 
 
 
