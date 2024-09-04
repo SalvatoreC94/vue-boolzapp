@@ -22,73 +22,106 @@ body {
     height: 100vh;
 }
 
+/* Stile per la barra laterale dei contatti */
 .sidebar {
-    width: 30%;
+    width: 25%;
     background-color: #f2f2f2;
-    padding: 20px;
+    height: 100vh;
+    overflow-y: auto;
     border-right: 1px solid #ccc;
 }
 
+/* Stile per ciascun contatto nella barra laterale */
 .contact-item {
     display: flex;
     align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ccc;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
+/* Stile per il contatto attivo selezionato */
 .contact-item.active-contact {
-    background-color: #e0e0e0;
+    background-color: #e6f7ff;
 }
 
+/* Stile per l'avatar dei contatti */
 .contact-avatar {
-    width: 40px;
-    height: 40px;
     border-radius: 50%;
     margin-right: 10px;
+    width: 40px;
+    height: 40px;
 }
 
-.contact-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-name {
+/* Stile per il nome dei contatti */
+.contact-info .contact-name {
     font-weight: bold;
 }
 
-.chat-window {
-    width: 70%;
-    padding: 20px;
-    background-color: #e5ddd5;
+/* Stile per la sezione della chat */
+.chat {
+    width: 75%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    background-image: url(https://i.pinimg.com/originals/a1/19/40/a119409b6f1104f04e6d903f2179e0fb.jpg);
+    height: 100vh;
+    justify-content: flex-end;
 }
 
+/* Contenitore per ciascun messaggio */
+.message-container {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 10px;
+}
+
+/* Stile generico per i messaggi */
 .message {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+    margin-bottom: 5px;
     max-width: 60%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 8px;
-    position: relative;
+    font-size: 0.9em;
 }
 
-.message.sent {
+/* Stile per i messaggi inviati dall'utente */
+.sent {
     background-color: #dcf8c6;
     align-self: flex-end;
+    text-align: right;
 }
 
-.message.received {
-    background-color: #fff;
+/* Stile per i messaggi ricevuti */
+.received {
+    background-color: #ffffff;
     align-self: flex-start;
+    text-align: left;
 }
 
-.message-date {
-    font-size: 0.7em;
-    color: #999;
-    position: absolute;
-    bottom: -15px;
-    right: 10px;
+/* Stile per l'orario dei messaggi */
+.message-time {
+    font-size: 0.8em;
+    color: #888;
+    margin-top: 5px;
+    text-align: right;
+}
+
+/* Stile per la barra di input dei messaggi */
+.chat-footer {
+    padding: 10px;
+    background-color: #f2f2f2;
+    position: sticky;
+    bottom: 0;
+}
+
+/* Stile per il campo di input nella chat */
+.chat-footer input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
 }

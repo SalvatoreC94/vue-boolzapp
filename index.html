@@ -16,7 +16,6 @@
 <body>
 
     <div id="app">
-        <!-- Sidebar con la lista contatti -->
         <div class="sidebar">
             <div v-for="(contact, index) in contacts" :key="contact.name" class="contact-item"
                 @click="selectContact(index)" :class="{ 'active-contact': index === activeContactIndex }">
@@ -27,11 +26,19 @@
             </div>
         </div>
 
-        <!-- Finestra della chat -->
-        <div class="chat-window">
-            <div v-for="(message, index) in activeContact.messages" :key="index" :class="['message', message.status]">
-                <p class="message-text">{{ message.message }}</p>
-                <span class="message-date">{{ message.date }}</span>
+        <div class="chat">
+            <!-- Visualizza i messaggi del contatto attivo -->
+            <div v-for="message in activeContact.messages" :key="message.date" class="message-container">
+                <div :class="['message', message.status]">
+                    <p>{{ message.message }}</p>
+                    <span class="message-time">{{ message.date }}</span>
+                </div>
+            </div>
+
+            <!-- Aggiunta del campo di input per inviare nuovi messaggi -->
+            <div class="chat-footer">
+                <input v-model="newMessage" @keyup.enter="sendMessage" type="text"
+                    placeholder="Scrivi un messaggio..." />
             </div>
         </div>
     </div>
