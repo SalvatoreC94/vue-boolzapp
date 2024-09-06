@@ -10,38 +10,69 @@
     <!-- link Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
+    <main>
+        <div id="app" class="container">
 
-    <div id="app">
-        <div class="sidebar">
-            <div v-for="(contact, index) in contacts" :key="contact.name" class="contact-item"
-                @click="selectContact(index)" :class="{ 'active-contact': index === activeContactIndex }">
-                <img :src="contact.avatar" alt="contact image" class="contact-avatar" />
-                <div class="contact-info">
-                    <p class="contact-name">{{ contact.name }}</p>
+            <div class="sidebar">
+                <div class="user-contact">
+                    <img :src="user.avatar" alt="User avatar" class="user-avatar" />
+                    <div class="user-info">
+                        <p class="user-name">{{ user.name }}</p>
+                        <div class="user-icons">
+                            <i class="fa-brands fa-instagram"></i>
+                            <i class="fa-regular fa-circle"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-search">
+                    <input type="text" v-model="searchQuery" placeholder="Cerca contatti..." class="search-input" />
+                </div>
+                <div v-for="(contact, index) in contacts" :key="contact.name" class="contact-item"
+                    @click="selectContact(index)" :class="{ 'active-contact': index === activeContactIndex }">
+                    <img :src="contact.avatar" alt="contact image" class="contact-avatar" />
+                    <div class="contact-info">
+                        <p class="contact-name">{{ contact.name }}</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat">
+                <div class="active-contact-bar" v-if="activeContact">
+                    <img :src="activeContact.avatar" alt="Active contact avatar" class="active-contact-avatar" />
+                    <p class="active-contact-name">{{ activeContact.name }}</p>
+                </div>
+                <!-- Visualizza i messaggi del contatto attivo -->
+                <div class="message-container">
+                    <div v-for="message in activeContact.messages" :key="message.date" class="message-container">
+                        <div :class="['message', message.status]">
+                            <p>{{ message.message }}</p>
+                            <span class="message-time">{{ message.date }}</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Aggiunta del campo di input per inviare nuovi messaggi -->
+                <div class="chat-footer">
+                    <i class="fa-regular fa-face-smile"></i>
+                    <input v-model="newMessage" @keyup.enter="sendMessage" type="text"
+                        placeholder="Scrivi un messaggio..." />
+                    <i class="fa-solid fa-microphone"></i>
+
                 </div>
             </div>
         </div>
 
-        <div class="chat">
-            <!-- Visualizza i messaggi del contatto attivo -->
-            <div v-for="message in activeContact.messages" :key="message.date" class="message-container">
-                <div :class="['message', message.status]">
-                    <p>{{ message.message }}</p>
-                    <span class="message-time">{{ message.date }}</span>
-                </div>
-            </div>
-
-            <!-- Aggiunta del campo di input per inviare nuovi messaggi -->
-            <div class="chat-footer">
-                <input v-model="newMessage" @keyup.enter="sendMessage" type="text"
-                    placeholder="Scrivi un messaggio..." />
-            </div>
-        </div>
-    </div>
+    </main>
 
 
 

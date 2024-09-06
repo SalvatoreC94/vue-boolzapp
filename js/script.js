@@ -166,6 +166,11 @@ createApp({
                     ],
                 }
             ],
+            searchQuery: '',
+            user: {
+                name: 'Salvatore Cozzolino',
+                avatar: 'img/usericon.jpg'
+            },
             activeContactIndex: 0,
             newMessage: "", // Nuovo messaggio scritto dall'utente
         };
@@ -174,6 +179,7 @@ createApp({
         activeContact() {
             return this.contacts[this.activeContactIndex];
         }
+
     },
     methods: {
         selectContact(index) {
